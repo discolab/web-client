@@ -1,0 +1,17 @@
+.link {
+  background: var(--window-controls);
+  color: var(--text-primary);
+  padding: 5px 8px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.link.m-active {
+  background: var(--accent);
+  color: var(--light-gray);
+}

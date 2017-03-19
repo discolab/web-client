@@ -1,0 +1,98 @@
+.disco-item {
+  width: 175px;
+  height: 225px;
+  min-width: 1px;
+}
+
+.disco-item--cover {
+  width: 175px;
+  height: 175px;
+  background-size: cover;
+  background-position: center;
+  background-image: url('/assets/record.png');
+  z-index: 1;
+  position: absolute;
+}
+
+.disco-item--overlay {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  background-color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.disco-item:hover .disco-item--overlay {
+  opacity: 1;
+}
+
+.disco-item--record-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  -webkit-mask-image: url('/assets/recordmask.svg');
+  z-index: 0
+}
+
+.disco-item--caption {
+  width: 100%;
+  height: 50px;
+  font-family: 'Avenir-Light';
+  font-size: 14px;
+  text-align: left;
+  line-height: 18px;
+  padding-top: 10px;
+  position: absolute;
+  bottom: 0;
+}
+
+.disco-item--title,
+.disco-item--artist {
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color .2s ease-in-out;
+  max-width: 100%;
+  display: inline-block;
+  float: left;
+  clear: both;
+}
+
+.disco-item--title {
+  color: var(--text-primary);
+}
+
+.disco-item--artist {
+  color: var(--text-secondary);
+  font-size: 9px;
+  font-family: 'Avenir-Heavy';
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.disco-item-enter {
+  opacity: 0.01;
+}
+
+.disco-item-enter.disco-item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.disco-item-leave {
+  opacity: 1;
+}
+
+.disco-item-leave.disco-item-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

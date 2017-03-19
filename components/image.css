@@ -1,0 +1,16 @@
+.image {
+  position: relative;
+}
+
+.image-bg-gradient {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: linear-gradient(135deg, #e6846e, #846170);
+}
+
+.image-placeholder {
+  position: absolute;
+  transition: opacity .2s linear;
+  background-repeat: no-repeat;
+}
+

@@ -1,0 +1,274 @@
+.playing-queue {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  background-color: var(--nav);
+  z-index: 300;
+  transform: translate(0, 100%);
+  transition-duration: 300ms;
+}
+
+.playing-queue.m-visible {
+  transform: translate(0, 0);
+}
+
+.playing-queue > .close > .svgIcon {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  fill: #fff;
+  color: #fff;
+}
+
+.playing-queue > .close {
+  position: fixed;
+  top: 8px;
+  right: 10px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.playing-queue--title {
+  height: 45px;
+  text-align: center;
+  padding-top: 12px;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+}
+
+.playing-queue--title > h4 {
+  color: #fff;
+  font: 10px/11px 'Avenir-Roman';
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
+.playing-queue--content {
+  padding: 100px 100px 50px 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.playing-queue .header {
+  border-bottom: 1px solid rgba(159,171,179,0.15);
+  margin-bottom: 20px;
+  text-align: left;
+}
+  .playing-queue .header .svgIcon {
+    fill: #9fabb3;
+    color: #9fabb3;
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    height: 25px;
+    width: 25px;
+  }
+
+  .playing-queue .header h1 {
+    padding-left: 5px;
+    color: #9fabb3;
+    font: normal 14px 'Avenir-Light';
+    display: inline-block;
+  }
+
+
+
+.playing-queue--cover {
+  padding-bottom: 100%;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid rgba(159,171,179,0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+  .playing-queue--cover-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--sidebar);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .playing-queue--cover-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--overlay);
+    transition: all 0.3s linear;
+    opacity: 0;
+    z-index: 1;
+  }
+
+
+.playing-queue--info {
+  text-align: center;
+  padding: 20px 0px;
+  color: #9fabb3;
+}
+  .playing-queue--info h1 {
+    font: normal 14px 'Avenir-Light';
+  }
+  .playing-queue--info h4 {
+    font: 10px/11px 'Avenir-Roman';
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+
+
+.playing-queue--left {
+  display: inline-block;
+  position: fixed;
+  top: 30px;
+  right: 0;
+  margin-right: 50%;
+  padding-right: 40px;
+  width: 40%;
+  max-width: 500px;
+}
+
+.playing-queue--right {
+  width: 50%;
+  max-width: none;
+  margin-left: 50%;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  display: inline-block;
+  float: right;
+  padding-left: 30px;
+}
+  .playing-queue--right-wrapper {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: -10px;
+   bottom: 0;
+   overflow: hidden;
+   -webkit-mask-image: -webkit-gradient(
+     linear,
+     left top,
+     left bottom,
+     color-stop(0%, rgba(192,192,192,0)),
+     color-stop(10%, rgba(255,0,0,1)),
+     color-stop(90%, #fff),
+     color-stop(100%, rgba(128,128,128,0))
+   );
+   overflow-x: hidden;
+   overflow-y: auto;
+  }
+  .playing-queue--right-content {
+    margin-top: 30px;
+    padding-right: 60px;
+  }
+  .playing-queue--clear {
+    color: #9fabb3;
+    font: 9px 'Avenir-Heavy';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1% 1.5%;
+    margin: 0 3px;
+    float: right;
+    border: 1px solid transparent;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+
+.playing-queue--clear:hover {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.playing-queue--track-item {
+  height: 50px;
+  min-height: 50px;
+  margin-top: 10px;
+  padding-right: 50px;
+  position: relative;
+  cursor: pointer;
+}
+
+.playing-queue--track-item:hover {
+  background-color: var(--accent);
+}
+.playing-queue--track-item:hover .img {
+  opacity: 0.15;
+}
+.playing-queue--track-item:hover:after,
+.playing-queue--track-item:hover .info h3,
+.playing-queue--track-item:hover .info h5 {
+  color: var(--overlay-text);
+}
+
+.playing-queue--track-item:after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  content: attr(data-time);
+  font-size: 10px;
+  right: 15px;
+  color: #9fabb3;
+}
+
+.playing-queue--track-item .img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+}
+
+.playing-queue--track-item .info {
+  width: 100%;
+  line-height: 17px;
+  text-align: left;
+  padding-top: 10px;
+  padding-right: 60px;
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 60px;
+}
+.playing-queue--track-item .info h3,
+.playing-queue--track-item .info h5 {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+.playing-queue--track-item .info h3 {
+  font-size: 13px;
+  color: var(--overlay-text);
+}
+
+.playing-queue--track-item .info h5 {
+  font-size: 8px;
+  line-height: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #9fabb3;
+}
+
+.playing-queue--right .header,
+.playing-queue--track-item {
+  max-width: 500px;
+}

@@ -1,0 +1,86 @@
+:root {
+  --background: #fff;
+  --controls: #fff;
+  --text-secondary: #9fabb3;
+  --accent: #af995a;
+  --window-controls: rgba(159,171,179,0.5);
+  --welcome-background: #222;
+  --overlay-text: #fff;
+  --rule: rgba(159,171,179,0.15);
+  --light-gray: #f1f3f4;
+  --accent-red: #ed4223;
+  --accent-purple: #7e4c9e;
+  --accent-blue: #397ac9;
+  --accent-green: #3b9644;
+  --background-dark: #282d2e;
+  --profile-header: #fff;
+  --sidebar: #f3f4f4;
+  --nav: #282d2e;
+  --tooltip: #282d2e;
+  --text-primary: #282828;
+  --overlay: rgba(40,45,46,0.9);
+  --progress: #9fabb3;
+  --handle: rgba(214,214,214,0.5);
+  --button: #f3f4f4;
+  --button-hover: #d6d6d6;
+  --border: #f1f2f4;
+  --disabled: #ebeef0;
+  --input: #e1e4e6
+}
+
+@font-face {
+  font-family: Avenir-Light;
+  src: url("/assets/fonts/Avenir-Light.ttf")
+}
+
+@font-face {
+  font-family: Avenir-Roman;
+  src: url("/assets/fonts/Avenir-Roman.ttf")
+}
+
+@font-face {
+  font-family: Avenir-Heavy;
+  src: url("/assets/fonts/Avenir-Heavy.ttf")
+}
+
+*, *:before, *:after {
+    box-sizing: border-box
+}
+
+body {
+  font-family: 'Avenir-Light';
+  padding: 0;
+  margin: 0;
+  background: var(--background);
+  color: var(--text-primary);
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-feature-settings: "kern";
+  font-variant-ligatures: common-ligatures;
+  font-kerning: normal;
+}
+
+body h1,
+body h2,
+body h3 {
+  font-weight: normal;
+}
+
+select, textarea, input, button {
+  font: 12px 'Avenir-Light';
+  outline: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  background-color: transparent
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.main-content {
+  padding: 25px 50px 60px 25px;
+  position: relative;
+}
+

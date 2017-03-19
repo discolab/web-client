@@ -1,0 +1,28 @@
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  mask-size: 100% 100%;
+  background-color: black;
+}
+
+.icon.m-active {
+  background-color: white;
+}
+
+.icon[type="info"] {
+  mask-image: url('/assets/info.svg');
+}
+.icon[type="like"] {
+  mask-image: url('/assets/heart.svg');
+}
+.icon[type="open"] {
+  mask-image: url('/assets/open-folder.svg');
+}
+.icon[type="cast"] {
+  mask-image: url('/assets/cast.svg');
+}
+
+.icon:not(:last-child) {
+  margin-right: 15px;
+}

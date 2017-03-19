@@ -1,0 +1,6 @@
+.disco-items {
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

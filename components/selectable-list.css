@@ -1,0 +1,23 @@
+.selectableList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selectableList > li > a {
+  padding: 5px;
+  font-size: 13px;
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
+}
+
+.selectableList > li > a.m-selected,
+.selectableList > li > a:hover {
+  background: var(--accent);
+  color: var(--light-gray);
+}

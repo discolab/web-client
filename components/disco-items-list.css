@@ -1,0 +1,22 @@
+.disco-items-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.disco-items-list--item {
+  margin: 1.5%;
+  position: relative;
+  display: inline-block;
+}
+
+.disco-items-list--open {
+  position: absolute;
+  top: 50px;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+.disco-items-list--item:hover .disco-items-list--open {
+  opacity: 1;
+  z-index: 1;
+}
