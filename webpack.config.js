@@ -130,7 +130,7 @@ function getPlugins() {
 
 function getApiHost() {
   if (isProduction()) {
-    `http://${env('DISCOBOX_SERVER_HOST')}:${env('DISCOBOX_SERVER_PORT')}`
+    return `http://${env('DISCOBOX_SERVER_HOST')}:${env('DISCOBOX_SERVER_PORT')}`;
   } else {
     return 'http://discobox:9500';
   }
