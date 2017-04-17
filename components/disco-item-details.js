@@ -24,7 +24,7 @@ const DiscoItemDetails = ({ item }) => {
     <div className="disco-item-details">
       <h1>{item.artist}</h1>
       <h2>{item.title}</h2>
-      <img src={item.artwork_url}/>
+      <img src={item.artworkUrl}/>
       <dl>
         {
           details.map(([ name, value ]) => (

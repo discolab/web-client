@@ -4,12 +4,12 @@ import Image from 'components/image';
 import 'components/disco-item.css';
 
 const DiscoItem = ({ onClick = () => {}, item, visible }) => {
-  const { artist, title, artwork_url } = item;
+  const { artist, title, artworkUrl } = item;
 
   return (
       visible ?
         <div className="disco-item">
-          <Image src={artwork_url} width={175} height={175}/>
+          <Image src={artworkUrl} width={175} height={175}/>
           <div className="disco-item--overlay">
             <Icon item={item} type="info"/>
             <Icon item={item} type="like"/>
