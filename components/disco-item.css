@@ -53,6 +53,12 @@
   position: absolute;
   bottom: 0;
 }
+[data-device-type="mobile"] .disco-item--artist {
+  font-size: 11px;
+}
+[data-device-type="mobile"] .disco-item--title {
+  font-size: 16px;
+}
 
 .disco-item--title,
 .disco-item--artist {

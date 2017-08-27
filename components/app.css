@@ -84,3 +84,8 @@ select, textarea, input, button {
   position: relative;
 }
 
+[data-device-type="mobile"] .main-content {
+  padding: 15px;
+}
+
+

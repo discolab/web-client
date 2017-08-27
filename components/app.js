@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setCurrentHash } from 'data/current-hash'
+import { isMobile } from 'lib/browser-helpers'
 import Overlay from 'components/overlay';
 import DiscoItemDetails from 'components/disco-item-details'
 import FilterBuilder from 'components/filter-builder';
@@ -13,9 +14,11 @@ import 'components/app.css';
 
 const App = ({ currentItem, dispatch, queueVisibility }) => {
   const onClose = () => dispatch(setCurrentHash(null));
+  const showAdvancedControls = !isMobile;
+  const deviceType = isMobile ? 'mobile' : 'desktop';
 
   return (
-    <div className="app-container">
+    <div className="app-container" data-device-type={deviceType}>
       <div className="main-content">
         {
           currentItem ?
@@ -25,11 +28,13 @@ const App = ({ currentItem, dispatch, queueVisibility }) => {
             : null
         }
         <FilterSelector/>
-        <FilterBuilder/>
+        {
+          showAdvancedControls && <FilterBuilder/>
+        }
         <VisibleDiscoItems/>
       </div>
-      <PlayingQueue visible={queueVisibility}/>
-      <PlayerControls/>
+      { showAdvancedControls && <PlayingQueue visible={queueVisibility}/> }
+      { showAdvancedControls && <PlayerControls/> }
     </div>
   )
 };
