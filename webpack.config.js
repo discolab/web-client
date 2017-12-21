@@ -132,7 +132,7 @@ function getApiHost() {
   if (isProduction()) {
     return `http://${env('DISCOBOX_SERVER_HOST')}:${env('DISCOBOX_SERVER_PORT')}`;
   } else {
-    return 'http://discobox:9500';
+    return 'http://localhost:9500';
   }
 }
 
