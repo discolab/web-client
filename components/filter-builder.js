@@ -3,11 +3,8 @@ import 'components/filter-builder.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
-import { Html5Entities } from 'html-entities';
 import { unique, flatten } from 'lib/array-helpers';
 import filters from 'lib/filters';
-import replaceDiacritics from 'lib/replace-diacritics';
-import SelectableList from 'components/selectable-list';
 import {
   setArtistQuery,
   setComposerQuery,
@@ -44,10 +41,6 @@ const getColumnItems = (items, columnMapper) => {
   ).sort();
 };
 
-const itemContainsQuery = (query) => (item) => {
-  return !query || replaceDiacritics(item.toString()).includes(query);
-};
-
 const FilterBuilder = ({ items, dispatch, currentQueries, currentFilter }) => {
   const currentItems = items.filter(filters[currentFilter]);
 
@@ -57,7 +50,6 @@ const FilterBuilder = ({ items, dispatch, currentQueries, currentFilter }) => {
         {columns.map(([ columnName, setQuery, queryKey, columnMapper ]) => {
           const query = currentQueries[queryKey];
           const columnItems = getColumnItems(currentItems, columnMapper);
-          const filteredItems = columnItems.filter(itemContainsQuery(query));
 
           const debouncedChangeHandler = debounce(makeChangeHandler(dispatch, setQuery), DEBOUNCE_CHANGE_INTERVAL);
           const onChange = (e) => {
@@ -68,9 +60,6 @@ const FilterBuilder = ({ items, dispatch, currentQueries, currentFilter }) => {
           return (
             <div className="filterBuilder--column" key={queryKey}>
               <input className="filterBuilder--search" type="search" placeholder={columnName} onChange={onChange}/>
-              <div className="filterBuilder--list">
-                <SelectableList items={filteredItems}/>
-              </div>
             </div>
           );
         })}
