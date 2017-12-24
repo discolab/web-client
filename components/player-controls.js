@@ -15,11 +15,12 @@ import { toggleQueueVisibility } from 'data/queue-visibility';
 
 import 'components/player-controls.css';
 
-function onMediaUpdate({ items, volume, currentItemId, currentTime }) {
-
+function onMediaUpdate({ items, volume, currentMedia, currentItemId, currentTime }) {
   this.setState({
     volume,
     currentTime,
+    progress: currentMedia.currentTime / currentMedia.media.duration,
+    playerState: currentMedia.playerState,
     currentItem: items.find(({ itemId }) => currentItemId === itemId)
   });
 }
@@ -28,8 +29,10 @@ const PlayerControls = React.createClass({
 
   getInitialState() {
     return {
+      progress: 0,
       currentTime: null,
       currentItem: null,
+      playerState: 'LOADING',
       volume: getVolume()
     };
   },
@@ -44,31 +47,31 @@ const PlayerControls = React.createClass({
 
   render() {
     const { dispatch } = this.props;
-    const { currentTime, currentItem, volume } = this.state;
+    const { currentTime, currentItem, volume, playerState, progress } = this.state;
 
-    const onClick = () => dispatch(toggleQueueVisibility());
-    const onPrevClick = (e) => {
-      e.stopPropagation();
-      playPrev();
-    };
-    const onVolumeChange = (e) => {
+    const isPlaying = playerState === 'PLAYING';
+    const makeHandler = (fn) => (e) => {
       e.stopPropagation();
       e.preventDefault();
-      setVolume(e.target.value / 100);
+      fn(e);
     };
-    const onNextClick = (e) => {
-      e.stopPropagation();
-      playNext();
-    };
+
+    const onClick = makeHandler(() => dispatch(toggleQueueVisibility()));
+    const onPrevClick = makeHandler(() => playPrev());
+    const onVolumeChange = makeHandler((e) => setVolume(e.target.value / 100));
+    const onNextClick = makeHandler(() => playNext());
+    const onPlayClick = makeHandler(() => play());
+    const onPauseClick = makeHandler(() => pause());
+    const onVolumeMouseDown = (e) => e.stopPropagation();
 
     return (
       <div className="player-controls show" onClick={onClick}>
 
         <div className="button-group">
           <div className="play-control">
-            <div className="play-button playing">
-              <div className="play" onClick={pause}/>
-              <div className="pause" onClick={play}/>
+            <div className={['play-button', isPlaying ? ' playing' : '' ].join(' ')}>
+              <div className="play" onClick={onPlayClick}/>
+              <div className="pause" onClick={onPauseClick}/>
             </div>
           </div>
           <svg className="player-controls--icon skip-previous" onClick={onPrevClick}>
@@ -89,16 +92,16 @@ const PlayerControls = React.createClass({
         </div>
 
         <div className="time">
-          <div className="elapsed">{currentTime && timecode(currentTime)}</div>
+          <div className="elapsed">{currentTime && timecode(currentTime * 1000)}</div>
           <div className="length">4:04</div>
         </div>
 
         <div className="timeline">
           <div className="full"/>
-          <div className="handle" style={{ marginLeft: 145 }}>
+          <div className="handle" style={{ marginLeft: `${progress * 100}%` }}>
             <div className="dot"/>
           </div>
-          <div className="progress" style={{ width: 150 }}/>
+          <div className="progress" style={{ width: `${progress * 100}%` }}/>
         </div>
 
         <div className="extras">
@@ -111,7 +114,10 @@ const PlayerControls = React.createClass({
               <div className="volume-slidebar">
                 <div className="volume-level" style={{ top: 100 - volume * 100 }}/>
               </div>
-              <input type="range" defaultValue="50" min="0" max="100" step="1" onChange={onVolumeChange}/>
+              <input type="range" defaultValue="50" min="0" max="100" step="1"
+                     onChange={onVolumeChange}
+                     onClick={onVolumeMouseDown}
+              />
             </div>
           </div>
         </div>
