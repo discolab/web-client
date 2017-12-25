@@ -14,14 +14,6 @@
   transform: translate(0, 0);
 }
 
-.playing-queue > .close > .svgIcon {
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  fill: #fff;
-  color: #fff;
-}
-
 .playing-queue > .close {
   position: fixed;
   top: 8px;
@@ -64,15 +56,6 @@
   margin-bottom: 20px;
   text-align: left;
 }
-  .playing-queue .header .svgIcon {
-    fill: #9fabb3;
-    color: #9fabb3;
-    display: inline-block;
-    position: relative;
-    top: 7px;
-    height: 25px;
-    width: 25px;
-  }
 
   .playing-queue .header h1 {
     padding-left: 5px;

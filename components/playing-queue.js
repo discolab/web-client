@@ -50,20 +50,15 @@ const PlayingQueue =  React.createClass({
       <div className={ visible ? 'playing-queue m-visible' : 'playing-queue'}>
 
         <div className="close">
-          <svg className="svgIcon">
-            <use xlinkHref="/assets/sprite.svg#close"/>
-          </svg>
+          <div className="svgIcon">
+          </div>
         </div>
 
         <div className="playing-queue--content">
           <div className="playing-queue--left">
             <div className="header">
-              <svg className="svgIcon">
-                <use xlinkHref="/assets/sprite.svg#track"/>
-              </svg>
               <h1>Currently Playing</h1>
             </div>
-
             <div className="playing-queue--cover">
               <div className="playing-queue--cover-overlay"/>
               <div className="playing-queue--cover-image" style={bgImage} />
@@ -78,11 +73,7 @@ const PlayingQueue =  React.createClass({
             <div className="playing-queue--right-wrapper">
               <div className="playing-queue--right-content">
                 <div className="header">
-                  <svg className="svgIcon">
-                    <use xlinkHref="/assets/sprite.svg#queue"/>
-                  </svg>
                   <h1>Up Next</h1>
-                  <a href="#" className="playing-queue--clear">Clear</a>
                 </div>
 
                 {queue.map((item) => {

@@ -164,6 +164,7 @@
   top: 16px;
   left: 16px;
   cursor: pointer;
+  background-image: url("/assets/skip-prev.svg");
 }
 .player-controls .skip-next {
   width: 29px;
@@ -174,6 +175,7 @@
   bottom: 23px;
   left: 90px;
   cursor: pointer;
+  background-image: url("/assets/skip-next.svg");
 }
 .player-controls .time {
   font: 9px/12px 'Avenir-Light';
@@ -270,12 +272,14 @@
   border-radius: 99em;
 }
 .player-controls .extras .player-controls--icon.volume {
+  background-image: url("/assets/volume-white.svg");
   width: 30px;
   height: 30px;
   position: absolute;
   top: 14px;
   right: 23px;
   z-index: 101;
+
 }
 .player-controls .extras .player-controls--icon.volume use.mute {
   display: none;

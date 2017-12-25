@@ -74,12 +74,10 @@ const PlayerControls = React.createClass({
               <div className="pause" onClick={onPauseClick}/>
             </div>
           </div>
-          <svg className="player-controls--icon skip-previous" onClick={onPrevClick}>
-            <use xlinkHref="/assets/sprite.svg#skip-previous"/>
-          </svg>
-          <svg className="player-controls--icon skip-next" onClick={onNextClick}>
-            <use xlinkHref="/assets/sprite.svg#skip-next"/>
-          </svg>
+          <div className="player-controls--icon skip-previous" onClick={onPrevClick}>
+          </div>
+          <div className="player-controls--icon skip-next" onClick={onNextClick}>
+          </div>
         </div>
 
         <div className="currentInfo">
@@ -105,10 +103,7 @@ const PlayerControls = React.createClass({
         </div>
 
         <div className="extras">
-          <svg className="player-controls--icon volume">
-            <use xlinkHref="/assets/sprite.svg#volume"/>
-            <use xlinkHref="/assets/sprite.svg#mute" className="mute"/>
-          </svg>
+          <div className="player-controls--icon volume" />
           <div className="volume-control">
             <div className="wrapper">
               <div className="volume-slidebar">
